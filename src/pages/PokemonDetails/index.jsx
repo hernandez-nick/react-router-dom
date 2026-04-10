@@ -2,20 +2,30 @@ import React from "react";
 import { useParams } from "react-router";
 
 const PokemonDetails = (props) => {
-  const params = useParams();
+  const params = useParams(); // { pokeId: "1" }
+  // const { pokeId } = useParams()
 
-  const pokemon = props.pokemon.find((p) => p._id === parseInt(params.pokeId));
-  console.log(params);
+  // const pokemon = props.pokemon.find(p => p._id === parseInt(params.pokeId))
+  // console.log(params)
   const properName =
-    pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1);
+    props.selectedPokemon.name.charAt(0).toUpperCase() +
+    props.selectedPokemon.name.slice(1);
+
   return (
     <div>
       <h2>{properName}'s Details</h2>
       <dl>
         <dt>Weight:</dt>
-        <dd>{pokemon.weight}</dd>
+        <dd>{props.selectedPokemon.weight}</dd>
         <dt>Height:</dt>
-        <dd>{pokemon.height}</dd>
+        <dd>{props.selectedPokemon.height}</dd>
+        <dt>Sprite</dt>
+        <dd>
+          <img
+            src={props.selectedPokemon.sprites.front_default}
+            alt={props.selectedPokemon.name}
+          />
+        </dd>
       </dl>
     </div>
   );

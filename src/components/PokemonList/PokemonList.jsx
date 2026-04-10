@@ -1,15 +1,22 @@
-import { Link } from 'react-router';
+// src/components/PokemonList/PokemonList.jsx
+import { Link } from "react-router";
 
 const PokemonList = (props) => {
   return (
     <>
       <h2>Pokemon</h2>
       <ul>
-        {props.pokemon.map((currentPokemon) => (
-          <li key={currentPokemon.name}>
+        {/* {props.pokemon.map((currentPokemon) => (
             <Link to={`/pokemon/${currentPokemon._id}`}>
-              {currentPokemon.name}
+                <li key={currentPokemon.name}>{currentPokemon.name}</li>
             </Link>
+        ))} */}
+        {props.pokemon.map((currentPokemon) => (
+          <li
+            onClick={() => props.handleSearch(currentPokemon.name)}
+            key={currentPokemon.name}
+          >
+            {currentPokemon.name}
           </li>
         ))}
       </ul>
